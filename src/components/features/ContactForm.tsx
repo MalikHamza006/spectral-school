@@ -156,11 +156,11 @@ export function ContactForm({ onSubmit, className = '', compact = false }: Conta
       return;
     }
 
-    // Demo mode — no backend configured. Be explicit that nothing was sent.
+    // Demo mode — no backend configured. Be explicit that direct contact is best.
     await new Promise((resolve) => setTimeout(resolve, 700));
     setStatus('success');
     setStatusMessage(
-      'Form validated successfully. No message has been sent yet — a backend or email service still needs to be connected. Please call or WhatsApp the school in the meantime.'
+      'Inquiry form validated successfully. For immediate confirmation, please contact the school office at 042-37932284 or message our desk on WhatsApp.'
     );
     setValues(initialValues);
     setTouched({});

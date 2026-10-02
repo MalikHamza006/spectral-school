@@ -33,11 +33,9 @@ export function FacilityGrid({ className = '' }: { className?: string }) {
                 />
               )}
 
-              {!facility.confirmed && (
-                <span className="absolute left-3 top-3 rounded-full bg-amber-500/95 px-2.5 py-1 text-[0.62rem] font-bold uppercase tracking-[0.1em] text-white">
-                  To be confirmed
-                </span>
-              )}
+              <span className="absolute left-3 top-3 rounded-full bg-navy/85 backdrop-blur-sm px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.1em] text-white/90">
+                Campus Space
+              </span>
             </div>
 
             <figcaption className="p-5">

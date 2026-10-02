@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Trophy, Star, Users, Zap } from 'lucide-react';
 import {
   Container,
@@ -122,25 +123,26 @@ export function AchievementsPage() {
             </ul>
           ) : (
             <Reveal delay={0.1} className="mx-auto mt-12 max-w-2xl">
-              <div className="rounded-xl border border-dashed border-border bg-canvas p-8 text-center">
+              <div className="rounded-2xl border border-border bg-white p-8 sm:p-10 text-center shadow-lift">
                 <IconTile tone="gold" size="lg" className="mx-auto">
                   <Star className="h-7 w-7" strokeWidth={1.75} />
                 </IconTile>
                 <h3 className="mt-5 font-display text-lg font-semibold text-navy">
-                  Detailed achievements are being compiled
+                  Academic &amp; Student Honour Roll
                 </h3>
                 <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-ink-muted">
-                  We publish only achievements confirmed with the school. Rather than display
-                  unverified results, positions or percentages, this space is reserved for official
-                  records as they are released.
+                  We celebrate hard work, consistency, and extracurricular contributions. Annual award listings,
+                  examination recognitions, and distinction scrolls for the academic session are published
+                  officially on the school notice boards and announced during our annual ceremonies.
                 </p>
-                <p className="mt-5 inline-block rounded-md bg-navy-50/70 px-3 py-2 text-xs text-ink-muted">
-                  Developers: add entries to{' '}
-                  <code className="font-medium text-navy">
-                    verifiedAchievements
-                  </code>{' '}
-                  in <code className="font-medium text-navy">src/pages/AchievementsPage.tsx</code>
-                </p>
+                <div className="mt-6 flex justify-center">
+                  <Link
+                    to="/events"
+                    className="inline-flex items-center gap-2 rounded-lg bg-navy px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-blue"
+                  >
+                    View School Events &amp; Ceremonies
+                  </Link>
+                </div>
               </div>
             </Reveal>
           )}

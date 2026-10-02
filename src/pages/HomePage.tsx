@@ -12,7 +12,6 @@ import {
   CTASection,
   SectionIntro,
   PhotoFeature,
-  PhotoBand,
   PhotoStrip,
   cardPhotoFor,
 } from '../components';
@@ -301,22 +300,6 @@ export function HomePage() {
         primary={{ label: 'Apply for Admission', to: '/admissions' }}
         secondary={{ label: 'Visit the Campus', to: '/contact' }}
       />
-
-      {/* Final photographic band. */}
-      <section className="section bg-white" aria-labelledby="home-contact-band-heading">
-        <Container>
-          <h2 id="home-contact-band-heading" className="sr-only">
-            Get in touch
-          </h2>
-          <PhotoBand
-            photo="campusD"
-            alt="Official photograph of Spectral Model School & College"
-            eyebrow="Get in Touch"
-            title="Questions? Call the office."
-            description="Call 042-37932284 or 0322-7595534, or send an inquiry and we will get back to you."
-          />
-        </Container>
-      </section>
     </>
   );
 }

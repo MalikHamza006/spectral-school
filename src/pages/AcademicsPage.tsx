@@ -120,21 +120,26 @@ export function AcademicsPage() {
                     Curriculum Information
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-white/70">
-                    The specific curriculum, board and subject combinations for each level have not
-                    been published on this website yet. The school office will provide full details
-                    during admission counselling.
+                    Curriculum outlines, subject selections, and examination board information are
+                    provided directly by the school administration desk. During admission counselling,
+                    our academic coordinators review the syllabus and prerequisites suited to each student.
                   </p>
-                  <div className="mt-6 rounded-lg border border-dashed border-gold/40 bg-gold/10 p-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.1em] text-gold-light">
-                      Content pending
+                  <div className="mt-6 rounded-xl border border-white/10 bg-white/5 p-4 sm:p-5">
+                    <p className="text-xs font-semibold uppercase tracking-[0.12em] text-gold-light">
+                      Academic Prospectus &amp; Counselling
                     </p>
-                    <p className="mt-1.5 text-sm leading-relaxed text-white/70">
-                      To publish real programme details, replace the placeholder copy in{' '}
-                      <code className="rounded bg-white/10 px-1.5 py-0.5 text-[0.8em] text-gold-light">
-                        src/data/programs.ts
-                      </code>
-                      .
+                    <p className="mt-2 text-sm leading-relaxed text-white/80">
+                      For detailed course outlines and admission requirements for School and College levels,
+                      please contact our academic office or visit the campus at Qazi Park Road, Shahdara.
                     </p>
+                    <div className="mt-4 flex flex-wrap gap-2.5">
+                      <Button variant="accent" size="sm" asChild>
+                        <Link to="/contact">Contact Academic Desk</Link>
+                      </Button>
+                      <Button variant="whitestroke" size="sm" asChild>
+                        <Link to="/admissions">Admissions Overview</Link>
+                      </Button>
+                    </div>
                   </div>
                 </Card>
               </Reveal>

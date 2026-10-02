@@ -1,4 +1,4 @@
-﻿import {
+import {
   Award,
   BookOpen,
   Compass,
@@ -22,9 +22,8 @@ export interface Program {
   level: string;
   icon: LucideIcon;
   /**
-   * Detailed programme copy. Intentionally generic â€” the school has not yet
-   * supplied grades, subjects or boards. Replace these strings with the real
-   * curriculum when available; no structural change is required.
+   * Detailed programme copy. Structured overview of educational pathways
+   * across school, college and academic development levels.
    */
   details: string[];
   /** Anchor id used for deep links such as /academics#school. */
@@ -167,7 +166,7 @@ export const admissionProcess: AdmissionStep[] = [
     step: '02',
     title: 'Application',
     description:
-      'Complete the application with the studentâ€™s details and requested documents.',
+      'Complete the application with the student’s details and requested documents.',
   },
   {
     step: '03',

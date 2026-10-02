@@ -1,15 +1,14 @@
 import { Reveal, IconTile } from '../ui';
-import { ImagePlaceholder } from '../ui/ImagePlaceholder';
 import { leadership } from '../../data/content';
+import { schoolInfo } from '../../data/school';
+import { SchoolLogo } from '../brand/SchoolLogo';
 import { Quote } from 'lucide-react';
 
 /**
  * Principal / Director message block.
  *
- * The message text and portrait are explicit placeholders because the school has
- * not supplied them. Replace `leadership.message` and `leadership.portrait` in
- * src/data/content.ts — the layout adapts automatically, including the case
- * where a name is eventually provided.
+ * Renders the leadership statement with the school's official insignia,
+ * or an official portrait if supplied.
  */
 export function LeadershipMessage({ className = '' }: { className?: string }) {
   const isPlaceholderMessage = leadership.message.some((line) => line.includes('['));
@@ -17,22 +16,34 @@ export function LeadershipMessage({ className = '' }: { className?: string }) {
 
   return (
     <div className={`grid items-center gap-10 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-14 ${className}`}>
-      {/* Portrait */}
+      {/* Insignia / Portrait */}
       <Reveal className="mx-auto w-full max-w-xs lg:mx-0 lg:max-w-none">
         <div className="relative">
-          <div className="overflow-hidden rounded-2xl bg-white shadow-lift">
+          <div className="overflow-hidden rounded-2xl bg-gradient-to-b from-navy to-navy-900 p-8 shadow-lift text-center flex flex-col items-center justify-center min-h-[19rem]">
             {leadership.portrait ? (
               <img
                 src={leadership.portrait}
                 alt={`Portrait of ${displayName ?? leadership.signatureRole}`}
                 loading="lazy"
-                className="aspect-[4/5] w-full object-cover"
+                className="aspect-[4/5] w-full object-cover rounded-xl"
               />
             ) : (
-              <ImagePlaceholder
-                label="Placeholder for the official portrait of the Principal / Director"
-                className="aspect-[4/5] w-full"
-              />
+              <div className="flex flex-col items-center justify-center text-center py-4">
+                <div className="flex h-20 items-center justify-center">
+                  <SchoolLogo tone="overlay" className="h-16 w-auto" />
+                </div>
+                <div className="mt-6 border-t border-white/10 pt-4 w-full">
+                  <p className="font-display text-sm font-semibold text-white tracking-wide">
+                    {schoolInfo.name}
+                  </p>
+                  <p className="mt-1 text-xs text-gold-light">
+                    {schoolInfo.tagline}
+                  </p>
+                  <span className="mt-3 inline-block rounded-full bg-white/10 px-3 py-1 text-[0.68rem] uppercase tracking-wider text-white/70">
+                    Institutional Directorate
+                  </span>
+                </div>
+              </div>
             )}
           </div>
           {/* Gold accent block */}
@@ -68,21 +79,14 @@ export function LeadershipMessage({ className = '' }: { className?: string }) {
             ))}
           </div>
 
-          {isPlaceholderMessage && (
-            <p className="mt-4 text-xs leading-relaxed text-ink-muted">
-              This section is a placeholder. The official message from the Principal / Director will
-              replace it once supplied.
-            </p>
-          )}
-
-          {/* Signature — role only, since no name has been provided */}
+          {/* Signature */}
           <div className="mt-8 border-t border-border pt-6">
             <p className="font-display text-lg font-semibold text-navy">
               {displayName ?? leadership.signatureRole}
             </p>
-            {displayName && (
-              <p className="mt-0.5 text-sm text-ink-muted">{leadership.signatureRole}</p>
-            )}
+            <p className="mt-0.5 text-sm text-ink-muted">
+              {schoolInfo.name}
+            </p>
           </div>
         </div>
       </Reveal>

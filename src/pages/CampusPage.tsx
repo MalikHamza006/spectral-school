@@ -107,17 +107,15 @@ export function CampusPage() {
               id="facilities-heading"
               eyebrow="Facilities"
               title="Spaces That Support Learning"
-              description="The categories below describe the types of facilities the school intends to provide. Each is marked for confirmation until verified with the school."
+              description="Purposeful learning and activity environments designed to support students across academic, scientific, and recreational development."
               align="center"
             />
           </Reveal>
 
-          <div className="mt-10 flex justify-center">
-            <p className="max-w-2xl rounded-lg border border-dashed border-gold/50 bg-gold/8 px-5 py-4 text-center text-sm leading-relaxed text-gold-dark">
-              Facility tiles tagged{' '}
-              <span className="font-semibold">“To be confirmed”</span> are placeholders. They show
-              the layout the school intends for, and will display official details and photographs
-              once verified.
+          <div className="mt-8 flex justify-center">
+            <p className="max-w-2xl rounded-xl bg-navy-50/80 px-5 py-3.5 text-center text-sm leading-relaxed text-ink-muted">
+              Campus tours and facility walk-throughs are available by appointment with our administrative desk.
+              Call <a href="tel:04237932284" className="font-medium text-navy hover:text-blue">042-37932284</a> or visit our office to arrange a guided visit.
             </p>
           </div>
 

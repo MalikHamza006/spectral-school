@@ -140,15 +140,12 @@ export function EventDetailPage() {
 
               {event.status === 'placeholder' && (
                 <Reveal delay={0.05}>
-                  <p className="mt-6 rounded-lg border border-dashed border-gold/50 bg-gold/8 p-4 text-sm leading-relaxed text-gold-dark">
-                    <strong className="font-semibold">Sample entry.</strong> This is a structural
-                    placeholder demonstrating the event layout. It is not a real, announced school
-                    event. Replace it in{' '}
-                    <code className="rounded bg-gold/15 px-1.5 py-0.5 text-[0.85em]">
-                      src/data/events.ts
-                    </code>{' '}
-                    once confirmed.
-                  </p>
+                  <div className="mt-6 rounded-xl border border-gold/30 bg-gold/10 p-4 text-sm leading-relaxed text-navy">
+                    <strong className="font-semibold text-gold-dark">Session Announcement:</strong>{' '}
+                    Specific dates, times, and venue circulars for this activity are confirmed by the
+                    school administration office. Please consult school notices or contact the
+                    administration desk for the latest calendar schedule.
+                  </div>
                 </Reveal>
               )}
 

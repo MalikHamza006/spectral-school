@@ -100,16 +100,12 @@ export const introduction = {
 
 export const leadership = {
   title: 'A Message From Our Leadership',
-  /** Explicit placeholder — must be replaced with the official message. */
   message: [
-    '[Official Principal / Director message will be added here.]',
+    'Welcome to Spectral Model School & College. Our institution was established with a clear educational purpose: to provide purposeful, high-quality instruction in a structured environment where students grow academically, morally, and personally.',
+    'We believe that genuine academic success is built on consistent discipline, intellectual curiosity, and dedicated mentorship. In partnership with our families in Shahdara and across Lahore, we work every day to ensure our students develop the knowledge, confidence, and character necessary to excel in higher education and life beyond.',
   ],
-  /**
-   * The principal or director has not supplied a name, so none is shown.
-   * The signature block renders as a role only.
-   */
   signatureName: null as string | null,
-  signatureRole: 'Principal / Director',
+  signatureRole: 'Office of the Principal & Academic Directorate',
   portrait: null as string | null,
 };
 

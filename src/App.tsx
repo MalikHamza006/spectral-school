@@ -1,6 +1,6 @@
 import { Suspense, lazy, useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
-import { Navbar, Footer, WelcomeSplash } from './components';
+import { Navbar, Footer, WelcomeSplash, SpectralAIAssistant } from './components';
 import { ScrollToTop } from './components/ScrollToTop';
 import { HomePage } from './pages/HomePage';
 
@@ -109,6 +109,7 @@ export default function App() {
       </main>
 
       <Footer />
+      <SpectralAIAssistant />
     </>
   );
 }

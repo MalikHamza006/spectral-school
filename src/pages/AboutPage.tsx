@@ -16,7 +16,6 @@ import {
   LeadershipMessage,
   CTASection,
   PhotoFeature,
-  PhotoBand,
 } from '../components';
 import {
   introduction,
@@ -283,19 +282,6 @@ export function AboutPage() {
       <Section tone="canvas" aria-labelledby="leadership-heading">
         <Container>
           <LeadershipMessage className="scroll-mt-28" />
-        </Container>
-      </Section>
-
-      {/* Photographic pause before the trust band. */}
-      <Section tone="white" size="sm">
-        <Container>
-          <PhotoBand
-            photo="campusB"
-            alt="Official photograph of Spectral Model School & College"
-            eyebrow="Come and See"
-            title="The best way to judge a school is to visit it"
-            description="Arrange a campus tour, or call the office to ask about admission for the current session."
-          />
         </Container>
       </Section>
 

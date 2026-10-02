@@ -10,6 +10,7 @@ export { FacebookIcon, WhatsAppIcon } from './brand/BrandIcons';
 export { WelcomeSplash } from './brand/WelcomeSplash';
 export type { WelcomeSplashProps } from './brand/WelcomeSplash';
 export { ImagePlaceholder, ImageWithOverlay, ScrollHint } from './ui/ImagePlaceholder';
+export { SpectralAIAssistant } from './ai/SpectralAIAssistant';
 
 /* shadcn/ui primitives (Radix-based), restyled for this project's tokens. */
 export {

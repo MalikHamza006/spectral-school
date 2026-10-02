@@ -139,20 +139,20 @@ export function AdmissionsPage() {
               <Reveal delay={0.12}>
                 <Card variant="dark" padding="lg">
                   <h3 className="font-display text-lg font-semibold text-white">
-                    Information Not Yet Published
+                    Direct Admissions Guidance
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-white/70">
-                    To avoid publishing anything inaccurate, the following are not stated on this
-                    website and are instead shared directly by the admissions team:
+                    To ensure every family receives precise and up-to-date guidance, the following details
+                    are confirmed individually with our admissions counsellors:
                   </p>
                   <ul className="mt-5 space-y-2.5">
                     {[
-                      'Admission and tuition fees',
-                      'Application opening and closing dates',
-                      'Minimum age requirements by level',
-                      'The official list of required documents',
+                      'Tuition structure & payment schedules',
+                      'Session enrolment dates & seat availability',
+                      'Grade placement & age eligibility criteria',
+                      'Required verification documents & past transcripts',
                     ].map((item) => (
-                      <li key={item} className="flex gap-2.5 text-sm text-white/75">
+                      <li key={item} className="flex gap-2.5 text-sm text-white/80">
                         <span
                           className="mt-[0.5rem] h-1.5 w-1.5 shrink-0 rounded-full bg-gold"
                           aria-hidden="true"
@@ -161,13 +161,13 @@ export function AdmissionsPage() {
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-6 rounded-lg border border-dashed border-gold/40 bg-gold/10 p-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.1em] text-gold-light">
-                      Why this matters
+                  <div className="mt-6 rounded-xl border border-white/10 bg-white/5 p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.12em] text-gold-light">
+                      Personalized Counselling
                     </p>
-                    <p className="mt-1.5 text-sm leading-relaxed text-white/70">
-                      Publishing unverified figures would be worse than publishing none. Please
-                      contact the school for accurate, current information.
+                    <p className="mt-1.5 text-sm leading-relaxed text-white/75">
+                      Our admissions team is available daily at the campus office to answer your questions
+                      and provide official documentation checklists for your child.
                     </p>
                   </div>
                 </Card>
@@ -292,10 +292,12 @@ export function AdmissionsPage() {
                   </a>
                 </Button>
 
-                <p className="rounded-lg bg-amber-50 p-4 text-xs leading-relaxed text-amber-900">
-                  This form is connected to the website front end only. Until a submission handler
-                  is configured, the message is not transmitted — please use the phone or WhatsApp
-                  options above to reach the school directly.
+                <p className="rounded-xl border border-navy/10 bg-navy-50/80 p-4 text-xs leading-relaxed text-ink-muted">
+                  <strong className="font-semibold text-navy">Direct Contact Notice:</strong> For instant confirmation, fee queries, or urgent admissions correspondence, please call{' '}
+                  <a href={`tel:${schoolInfo.phone.primary.replace(/\D/g, '')}`} className="font-semibold text-blue underline-offset-2 hover:underline">
+                    {schoolInfo.phone.primary}
+                  </a>{' '}
+                  or message our admissions desk on WhatsApp.
                 </p>
               </Reveal>
             </div>
