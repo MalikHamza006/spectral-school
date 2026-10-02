@@ -16,21 +16,14 @@ export interface WelcomeSplashProps {
 const SESSION_KEY = 'spectral.splash.seen';
 
 /** Total on-screen time before the exit animation starts. */
-const HOLD_MS = 1500;
+const HOLD_MS = 1250;
 
 /**
- * Full-screen welcome splash.
+ * Full-screen welcome splash / preloader.
  *
- * Plays once on load: a deep blue gradient, the school's own logo, and an
- * animated "Welcome to Spectral School" reveal over a gold progress sweep.
- *
- * Accessibility notes:
- * - The overlay itself is `aria-hidden` because it is purely decorative; a
- *   visually hidden live region announces the load state instead, so screen
- *   reader users are not read a decorative animation.
- * - `prefers-reduced-motion` collapses the whole sequence to a short fade and
- *   removes every transform.
- * - Body scroll is locked while it is visible so the page behind cannot move.
+ * Plays on first load: a deep navy-blue gradient, the school's own logo, and an
+ * animated "Welcome to Spectral Model School & College" reveal over a gold progress sweep.
+ * Smooth, branded, fast, non-blocking.
  */
 export function WelcomeSplash({ oncePerSession = false }: WelcomeSplashProps) {
   const reduceMotion = useReducedMotion();
@@ -50,7 +43,7 @@ export function WelcomeSplash({ oncePerSession = false }: WelcomeSplashProps) {
       try {
         window.sessionStorage.setItem(SESSION_KEY, '1');
       } catch {
-        // Private browsing can block sessionStorage; the splash still works.
+        // Private browsing fallback
       }
     }
 
@@ -70,7 +63,6 @@ export function WelcomeSplash({ oncePerSession = false }: WelcomeSplashProps) {
 
   return (
     <>
-      {/* Announced to assistive tech; visually hidden. */}
       <p role="status" aria-live="polite" className="sr-only">
         {visible ? 'Loading Spectral Model School & College' : ''}
       </p>
@@ -80,92 +72,93 @@ export function WelcomeSplash({ oncePerSession = false }: WelcomeSplashProps) {
           <motion.div
             key="welcome-splash"
             aria-hidden="true"
-            className="on-dark fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden bg-navy"
+            onClick={() => setVisible(false)}
+            className="on-dark fixed inset-0 z-[100] flex cursor-pointer flex-col items-center justify-center overflow-hidden bg-navy select-none"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={
               reduceMotion
                 ? { opacity: 0 }
-                : { opacity: 0, scale: 1.06, filter: 'blur(6px)' }
+                : { opacity: 0, scale: 1.03, filter: 'blur(4px)' }
             }
-            transition={{ duration: reduceMotion ? 0.2 : 0.45, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: reduceMotion ? 0.2 : 0.38, ease: [0.22, 1, 0.36, 1] }}
           >
-            {/* Blue gradient wash that matches the brand's secondary colour */}
+            {/* Ambient deep navy-to-blue radial wash */}
             <div
               className="absolute inset-0"
               style={{
                 background:
-                  'radial-gradient(120% 120% at 50% 8%, #174EA6 0%, #0B1F3A 58%, #050F1F 100%)',
+                  'radial-gradient(110% 110% at 50% 12%, #174EA6 0%, #0B1F3A 60%, #040A16 100%)',
               }}
             />
 
-            {/* Slowly rotating gold ring */}
+            {/* Subtle revolving orbital gold ring */}
             <motion.div
-              className="absolute h-64 w-64 rounded-full border border-gold/25 sm:h-80 sm:w-80"
+              className="absolute h-72 w-72 rounded-full border border-gold/20 sm:h-96 sm:w-96"
               animate={reduceMotion ? undefined : { rotate: 360 }}
-              transition={{ duration: 14, repeat: Infinity, ease: 'linear' }}
+              transition={{ duration: 16, repeat: Infinity, ease: 'linear' }}
             >
-              <span className="absolute left-1/2 top-0 h-2 w-2 -translate-x-1/2 rounded-full bg-gold" />
+              <span className="absolute left-1/2 top-0 h-2 w-2 -translate-x-1/2 rounded-full bg-gold shadow-[0_0_8px_#D4A72C]" />
             </motion.div>
 
             {/* Content */}
             <div className="relative flex flex-col items-center px-6 text-center">
-              {/* Logo */}
+              {/* Responsive Prominent Logo */}
               <motion.div
-                initial={reduceMotion ? false : { opacity: 0, scale: 0.88, y: 12 }}
+                initial={reduceMotion ? false : { opacity: 0, scale: 0.9, y: 12 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className="flex h-28 items-center sm:h-40"
+                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+                className="flex w-[clamp(145px,17vw,235px)] items-center justify-center"
               >
                 <img
                   src={siteLogo.inverseSrc}
                   srcSet={siteLogo.inverseSrcSet}
                   width={siteLogo.width}
                   height={siteLogo.height}
-                  alt=""
+                  alt="Spectral Model School &amp; College"
                   decoding="sync"
                   fetchPriority="high"
-                  className="h-full w-auto object-contain drop-shadow-[0_4px_18px_rgba(0,0,0,0.35)]"
+                  className="w-full h-auto object-contain drop-shadow-[0_6px_22px_rgba(0,0,0,0.45)]"
                 />
               </motion.div>
 
               <motion.p
-                initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+                initial={reduceMotion ? false : { opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                className="mt-8 text-xs font-semibold uppercase tracking-[0.3em] text-white/60"
+                transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                className="mt-7 text-xs font-semibold uppercase tracking-[0.28em] text-white/65"
               >
                 Welcome to
               </motion.p>
 
               <motion.h2
-                initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+                initial={reduceMotion ? false : { opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="mt-2 font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl"
+                transition={{ duration: 0.6, delay: 0.32, ease: [0.22, 1, 0.36, 1] }}
+                className="mt-2 font-display text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl"
               >
-                Spectral School
+                Spectral Model School &amp; College
               </motion.h2>
 
-              {/* Gold rule that sweeps out from the centre */}
+              {/* Gold accent line */}
               <motion.span
-                className="mt-5 block h-1 w-28 rounded-full bg-gold sm:w-36"
+                className="mt-4 block h-1 w-24 rounded-full bg-gold sm:w-32"
                 initial={reduceMotion ? false : { scaleX: 0 }}
                 animate={{ scaleX: 1 }}
-                transition={{ duration: 0.65, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.55, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
               />
 
               <motion.p
                 initial={reduceMotion ? false : { opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.7 }}
-                className="mt-6 text-sm text-white/45"
+                transition={{ duration: 0.5, delay: 0.55 }}
+                className="mt-4 text-xs font-medium tracking-wide text-white/50 sm:text-sm"
               >
-                Model School &amp; College, Shahdara, Lahore
+                Qazi Park, Shahdara, Lahore
               </motion.p>
             </div>
 
-            {/* Progress sweep along the bottom edge */}
+            {/* Bottom Progress Bar */}
             <motion.div
               className="absolute inset-x-0 bottom-0 h-1 origin-left bg-gold"
               initial={{ scaleX: 0 }}

@@ -57,7 +57,7 @@ export function Footer() {
             alt=""
             loading="lazy"
             decoding="async"
-            className="h-16 w-auto object-contain sm:h-20"
+            className="h-16 sm:h-20 w-auto max-w-[clamp(150px,15vw,220px)] object-contain"
           />
           <span className="sr-only">{schoolInfo.name}</span>
           <p className="mt-5 max-w-sm text-[0.95rem] leading-relaxed text-white/65">

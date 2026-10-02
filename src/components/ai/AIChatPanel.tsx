@@ -139,6 +139,28 @@ export function AIChatPanel({
           </div>
         )}
 
+        {/* Quick Action Chips when conversation is fresh */}
+        {messages.length <= 1 && (
+          <div className="pt-2">
+            <p className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-ink-muted">
+              Quick Suggestions
+            </p>
+            <div className="flex flex-wrap gap-1.5">
+              {SPECTRAL_AI_CONFIG.quickActions.map((action) => (
+                <button
+                  key={action}
+                  type="button"
+                  onClick={() => onSendMessage(action, true)}
+                  disabled={state === 'processing'}
+                  className="rounded-full border border-navy/15 bg-white px-3 py-1.5 text-xs font-medium text-navy shadow-2xs transition hover:border-gold hover:bg-gold/10 hover:text-navy active:scale-95 disabled:opacity-50 text-left"
+                >
+                  {action}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
         <div ref={messagesEndRef} />
       </div>
 
@@ -152,8 +174,25 @@ export function AIChatPanel({
         />
       </div>
 
-      {/* Text Input Fallback Bar */}
+      {/* Text Input Fallback Bar with Quick Action Chips */}
       <div className="border-t border-navy/10 bg-white p-3">
+        {/* Quick Action Bar if active conversation */}
+        {messages.length > 1 && (
+          <div className="mb-2 flex items-center gap-1.5 overflow-x-auto pb-1 text-xs no-scrollbar">
+            {SPECTRAL_AI_CONFIG.quickActions.slice(0, 4).map((action) => (
+              <button
+                key={action}
+                type="button"
+                onClick={() => onSendMessage(action, true)}
+                disabled={state === 'processing'}
+                className="shrink-0 rounded-full border border-navy/10 bg-canvas px-2.5 py-1 text-[11px] font-medium text-navy hover:border-gold hover:bg-gold/10 active:scale-95 disabled:opacity-50"
+              >
+                {action}
+              </button>
+            ))}
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} className="relative flex items-center gap-2">
           <input
             ref={inputRef}
@@ -163,7 +202,7 @@ export function AIChatPanel({
             placeholder="Type your question..."
             disabled={state === 'processing'}
             className="w-full rounded-xl border border-navy/15 bg-canvas px-3.5 py-2 text-sm text-ink placeholder:text-ink-muted focus:border-navy focus:bg-white focus:outline-none focus:ring-2 focus:ring-navy/15 disabled:opacity-60"
-            aria-label="Type your message for Spectral AI"
+            aria-label="Type your message for Spectral AI Concierge"
           />
           <button
             type="submit"
@@ -176,7 +215,7 @@ export function AIChatPanel({
           </button>
         </form>
         <p className="mt-1.5 text-center text-[10px] text-ink-muted">
-          Spectral AI helps guide you through Spectral School LMS features & classes.
+          Spectral AI Concierge guides you through admissions, academics, and LMS.
         </p>
       </div>
     </aside>

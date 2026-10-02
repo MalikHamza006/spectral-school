@@ -26,3 +26,4 @@ export {
 } from './CampusPhotos';
 export { cardPhotoFor } from '../../data/cardPhotos';
 export { PortalLoginForm } from './PortalLoginForm';
+export { WelcomeAudioExperience } from './WelcomeAudioExperience';

@@ -33,7 +33,7 @@ export function SchoolLogo({ tone = 'solid', className = '' }: SchoolLogoProps) 
       height={siteLogo.height}
       alt="Spectral Model School &amp; College"
       decoding="async"
-      className={`h-12 w-auto object-contain lg:h-14 ${className}`}
+      className={`h-11 sm:h-12 xl:h-14 w-auto max-w-[clamp(128px,11.5vw,190px)] object-contain transition-transform duration-200 ${className}`}
     />
   );
 }

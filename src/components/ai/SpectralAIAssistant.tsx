@@ -48,9 +48,9 @@ export function SpectralAIAssistant() {
           <button
             type="button"
             onClick={handleToggleOpen}
-            className="group relative flex items-center gap-2.5 rounded-full bg-navy px-4 py-3 text-white shadow-float border border-gold/30 hover:border-gold hover:bg-navy-800 transition-all duration-300 hover:scale-105 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
-            aria-label="Open Spectral AI Assistant"
-            title="Open Spectral AI Assistant"
+            className="group relative flex items-center gap-2 rounded-full bg-navy p-2 sm:px-4 sm:py-2.5 text-white shadow-float border border-gold/30 hover:border-gold hover:bg-navy-800 transition-all duration-300 hover:scale-105 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+            aria-label="Open Spectral AI Concierge"
+            title="Open Spectral AI Concierge"
           >
             {/* Glowing gold background pulse */}
             <span
@@ -68,17 +68,17 @@ export function SpectralAIAssistant() {
             </div>
 
             {/* Desktop Label & Micro Indicator */}
-            <div className="flex flex-col text-left">
+            <div className="hidden sm:flex flex-col text-left">
               <span className="text-xs font-semibold tracking-wide text-white flex items-center gap-1">
                 <span>{SPECTRAL_AI_CONFIG.badgeText}</span>
                 <Sparkles className="h-3 w-3 text-gold opacity-80" />
               </span>
-              <span className="hidden sm:inline-block text-[10px] text-navy-200 font-medium">
-                Voice &amp; LMS Guide
+              <span className="text-[10px] text-navy-200 font-medium">
+                AI Concierge &amp; Guide
               </span>
             </div>
 
-            <div className="ml-1 flex h-6 w-6 items-center justify-center rounded-full bg-gold/15 text-gold group-hover:bg-gold group-hover:text-navy transition-colors">
+            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-gold/15 text-gold group-hover:bg-gold group-hover:text-navy transition-colors sm:ml-1">
               <Mic className="h-3 w-3" />
             </div>
           </button>

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useCallback, useEffect, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, MessageCircle, MapPin } from 'lucide-react';
-import { Button, Container, Reveal, ImageWithOverlay } from '../components';
+import { Button, Container, Reveal, ImageWithOverlay, WelcomeAudioExperience } from '../components';
 import { ScrollHint } from '../components/ui/ImagePlaceholder';
 import { pillars, schoolInfo, heroImages, homeHeroSequence } from '../data';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
@@ -209,6 +209,15 @@ export function HomeHero() {
             <Button variant="whitestroke" size="lg" asChild className="w-full sm:w-auto">
               <Link to="/about">Discover Spectral</Link>
             </Button>
+          </motion.div>
+
+          {/* Interactive Welcome Audio Experience with Play/Pause/Stop/Mute controls */}
+          <motion.div
+            initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <WelcomeAudioExperience />
           </motion.div>
 
           <motion.div
